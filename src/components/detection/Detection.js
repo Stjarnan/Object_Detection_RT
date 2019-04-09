@@ -1,14 +1,25 @@
 import React, { Component } from "react";
 import LoadModel from "../model/LoadModel.js";
+import Webcam from "../webcam/Webcam.js";
 
 class Detection extends Component {
-  render() {
-    let model;
-    LoadModel().then(res => {
-      model = res;
-    });
+  state = {
+    model: {},
+    modelLoaded: false
+  };
 
-    return <div className="detectionContainer" />;
+  componentWillMount() {
+    LoadModel().then(res => {
+      this.setState({ model: res, modelLoaded: true });
+    });
+  }
+
+  render() {
+    return (
+      <div className="detectionContainer">
+        <Webcam />
+      </div>
+    );
   }
 }
 export default Detection;

@@ -22,7 +22,11 @@ class Webcam extends Component {
   }
 
   render() {
-    return <video id="webcam" />;
+    return (
+      <canvas id="canvas">
+        <video id="webcam" />
+      </canvas>
+    );
   }
 }
 

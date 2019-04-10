@@ -49,7 +49,6 @@ class Detection extends Component {
       // Call rendering function
       // Rerun
       this.state.model.detect(webcam).then(predictions => {
-        console.log(predictions);
         renderPredictions(predictions);
         requestAnimationFrame(detectObject);
       });

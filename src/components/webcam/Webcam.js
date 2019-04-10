@@ -10,7 +10,7 @@ class Webcam extends Component {
         video: {
           facingMode: "user",
           width: 600,
-          height: 500
+          height: 600
         }
       })
       .then(stream => {
@@ -23,9 +23,10 @@ class Webcam extends Component {
 
   render() {
     return (
-      <canvas id="canvas">
+      <div className="webcamContainer">
+        <canvas id="canvas" width="600px" height="600px" />
         <video id="webcam" />
-      </canvas>
+      </div>
     );
   }
 }

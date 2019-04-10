@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LoadModel from "../model/LoadModel.js";
 import Webcam from "../webcam/Webcam.js";
+import "./Detection.css";
 
 class Detection extends Component {
   state = {

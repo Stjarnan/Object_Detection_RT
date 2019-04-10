@@ -11,6 +11,7 @@ class Detection extends Component {
   };
 
   componentWillMount() {
+    // Load model and save it in state
     LoadModel().then(res => {
       this.setState({ model: res, modelLoaded: true });
     });
@@ -19,11 +20,14 @@ class Detection extends Component {
   componentDidMount() {
     let webcam;
     let canvas;
-    const renderPredictions = predictions => {
-      predictions.forEach(prediction => {
-        const ctx = canvas.getContext("2d");
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    const renderPredictions = predictions => {
+      // Clear canvas before each redraw
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      predictions.forEach(prediction => {
+        // Draw a box using the coordinates received from predictions
         const x = prediction.bbox[0];
         const y = prediction.bbox[1];
         const width = prediction.bbox[2];
@@ -34,6 +38,9 @@ class Detection extends Component {
     };
 
     const detectObject = () => {
+      // Use models detect function to detect objects
+      // Call rendering function
+      // Rerun
       this.state.model.detect(webcam).then(predictions => {
         console.log(predictions);
         renderPredictions(predictions);
@@ -55,7 +62,7 @@ class Detection extends Component {
           webcam = document.getElementById("webcam");
           canvas = document.getElementById("canvas");
           initializeDetection();
-        }, 5000);
+        }, 2000);
       }
     };
 

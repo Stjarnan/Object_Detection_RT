@@ -24,6 +24,8 @@ class Detection extends Component {
     const renderPredictions = predictions => {
       // Clear canvas before each redraw
       const ctx = canvas.getContext("2d");
+      ctx.strokeStyle = "#5ff442";
+      ctx.font = "14px Helvetica";
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       predictions.forEach(prediction => {
@@ -34,11 +36,16 @@ class Detection extends Component {
         const height = prediction.bbox[3];
 
         ctx.strokeRect(x, y, width, height);
+        ctx.fillText(
+          prediction.class,
+          prediction.bbox[0],
+          prediction.bbox[1] - prediction.bbox[1] * 0.05
+        );
       });
     };
 
     const detectObject = () => {
-      // Use models detect function to detect objects
+      // Use the models detect function to detect objects
       // Call rendering function
       // Rerun
       this.state.model.detect(webcam).then(predictions => {

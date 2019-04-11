@@ -3,6 +3,8 @@ import LoadModel from "../model/LoadModel.js";
 import Webcam from "../webcam/Webcam.js";
 import "./Detection.css";
 
+import Loading from "../loading/Loading.js";
+
 class Detection extends Component {
   state = {
     model: {},
@@ -78,7 +80,7 @@ class Detection extends Component {
   render() {
     return (
       <div className="detectionContainer">
-        {this.state.modelLoaded ? <Webcam /> : <p>Loading..</p>}
+        {this.state.modelLoaded ? <Webcam /> : <Loading />}
       </div>
     );
   }

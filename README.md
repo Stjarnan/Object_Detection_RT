@@ -18,7 +18,7 @@ npm start
 
 ## Built With
 
-* [NPM] - The package manager used
+* NPM - The package manager used
 * [React](https://reactjs.org/) - Library used to build the application
 * [Coco-SSD](https://www.npmjs.com/package/@tensorflow-models/coco-ssd) - Model used to detect objects
 
